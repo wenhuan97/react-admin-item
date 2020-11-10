@@ -126,24 +126,25 @@ class Category extends Component {
     // 添加分类操作
     addCategorys = async () => {
         // 发送请求 添加分类
-        const { categoryName, parentId } = this.form1.getFieldValue()
+        // const values = await this.form1.validateFields();
+        // console.log(values);
+        // getFieldValue
+        const { categoryName, parentId } = await this.form1.validateFields()
         const result = await reqAddCateList(categoryName, parentId)
-        this.form1.validateFields().then(() => {
-            if (result.status === 0) {
-                if (parentId === this.state.parentId) {//如果添加的分类就当前分类列表下的分类
-                    //    重新获取 列表
-                    this.getCategorys()
-                } else if (parentId === '0') {//在二级分类下 添加一级分类 添加后 重新获取列表 但不显示一级列表
-                    //    重新获取 列表 由于状态里的parentId 并没有变化 所以不会显示到一级列表
-                    this.getCategorys('0')
-                }
+
+        if (result.status === 0) {
+            if (parentId === this.state.parentId) {//如果添加的分类就当前分类列表下的分类
+                //    重新获取 列表
+                this.getCategorys()
+            } else if (parentId === '0') {//在二级分类下 添加一级分类 添加后 重新获取列表 但不显示一级列表
+                //    重新获取 列表 由于状态里的parentId 并没有变化 所以不会显示到一级列表
+                this.getCategorys('0')
             }
-            this.setState({
-                showStatus: 0
-            })
-        }).catch(err => {
-            console.log(err);
+        }
+        this.setState({
+            showStatus: 0
         })
+
     }
 
 
@@ -162,7 +163,7 @@ class Category extends Component {
                         this.getCategorys()
                     }
                 })
-                
+
 
                 //   关闭窗口
                 this.setState({

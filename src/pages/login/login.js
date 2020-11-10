@@ -60,7 +60,7 @@ class App extends Component {
                                 name="username"
                                 rules={[
                                     {
-                                        required: true, min: 4, max: 12, whitespace: true,
+                                        required: true, min: 4, max: 12,
                                         message: '用户名长度不合法!',
                                     },
                                     {

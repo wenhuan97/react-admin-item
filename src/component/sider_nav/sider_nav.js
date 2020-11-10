@@ -34,20 +34,21 @@ class Sider_nav extends Component {
     getmeunNodes = (menuConfig) => {
         // 得到当前请求路径
         const path = this.props.location.pathname
-        return menuConfig.map(item => {
+        return menuConfig.map((item) => {
+
             /*
-             {
-               title: '首页', // 菜单标题名称 
-               key: '/home', // 对应的 path 
-               icon: {HomeOutlined}, // 图标名称 
-            }
-             <Menu.Item key="/home" icon={<HomeOutlined />}>
-                <Link to="/home">
-                    首页
-                </Link>
-            </Menu.Item>
-            <SubMenu></SubMenu>
-            */
+            {
+              title: '首页', // 菜单标题名称 
+              key: '/home', // 对应的 path 
+              icon: {HomeOutlined}, // 图标名称 
+           }
+            <Menu.Item key="/home" icon={<HomeOutlined />}>
+               <Link to="/home">
+                   首页
+               </Link>
+           </Menu.Item>
+           <SubMenu></SubMenu>
+           */
 
             // 如果 当前用户有item对应的权限 才需要显示对应的菜单项
             if (this.showAuth(item)) {
@@ -75,10 +76,7 @@ class Sider_nav extends Component {
                     )
                 }
             }
-
-
         })
-
     }
 
     // 页面渲染前 render()之前

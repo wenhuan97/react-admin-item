@@ -171,7 +171,6 @@ export default class AddModifyProduct extends PureComponent {
         }
 
 
-
         return (
             <Card title={title}>
                 <Form

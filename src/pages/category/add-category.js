@@ -41,7 +41,11 @@ export default class AddCategory extends Component {
                 <div style={{ marginBottom: 5 }}>分类名称：</div>
                 <Form.Item
                     rules={[
-                        { required: true, message: '分类信息不能为空' }
+                        { required: true, message: '分类信息不能为空' },
+                        {
+                            pattern: /^[a-zA-Z0-9[\u4E00-\u9FA5]+$/,
+                            message: '分类不能含有空格或其他字符'
+                        }
                     ]}
                     name="categoryName"
                     initialValue=''
